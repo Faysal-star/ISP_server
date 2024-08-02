@@ -4,7 +4,7 @@ There are about 55 servers in the list , with chat , movie , tv servers. Run the
 
 ## Running the appilcation
 ### From prebuilt binary
-1. Download executable from releases.
+1. Download executable from [releases](https://github.com/tasmirz/ISP_server/releases).
 ### From Source
 1. Download this code as zip
 2. Install Node.js if you haven't
@@ -26,5 +26,5 @@ pkg .
 3. Find built executables for Linux and windows on `build` directory
 ## Contibuting
 1. Fork this repo
-2. Add your servers to the server.csv file (you can edit it with MS Excel)
+2. Add your servers to the [server.csv](./servers.csv) file (you can edit it with MS Excel)
 3. Push and submit a pull request.

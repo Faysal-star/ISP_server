@@ -9,4 +9,4 @@ There are about 55 servers in the list , with chat , movie , tv servers. Run the
 4. Run the script using ```node script.js```
 5. The list will be generated and stored in ```working_url.txt``` file.
 
-**or, ** you can clone the repo and run ```npm i``` and ```node script.js``` commands.
+**or,** you can clone the repo and run ```npm i``` and ```node script.js``` commands.

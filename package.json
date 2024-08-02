@@ -1,5 +1,28 @@
 {
   "dependencies": {
-    "axios": "^1.7.3"
-  }
+    "csv-parser": "^3.0.0",
+    "ping": "^0.4.4"
+  },
+  "engines": {
+    "node": "16.x"
+  },
+  "name": "isp_server",
+  "version": "1.0.1",
+  "description": "There are about 55 servers in the list , with chat , movie , tv servers. Run the script to find which servers are accessible via your WiFi .",
+  "main": "script.js",
+  "scripts": {
+    "start": "node script.js"
+  },
+  "bin": "script.js",
+  "pkg": {
+    "assets": [
+      "/**/servers.csv"
+    ],
+    "targets": [
+      "node16-linux-x64",
+      "node16-win-x64"
+    ],
+    "outputPath": "build"
+  },
+  "license": "AGPL-3.0-only"
 }

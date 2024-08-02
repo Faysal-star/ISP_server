@@ -1,87 +1,108 @@
-const axios = require('axios');
+const http = require('http');
+const https = require('https');
+const ping = require('ping');
 const fs = require('fs');
-
-const urls = [
-    'http://103.112.62.79:8065/',
-    'https://103.112.62.79:5443/',
-    'http://103.150.254.245:3000',
-    'http://103.150.254.245:56969',
-    'http://103.112.62.79:5555/',
-    'http://146.196.48.9/',
-    'https://103.200.93.146/',
-    'http://103.43.151.2:8099/',
-    'https://103.200.93.146/games/',
-    'http://146.196.48.10/',
-    'http://103.9.185.82/',
-    'http://103.76.47.6:8096/',
-    'http://103.76.47.6:8080/',
-    'http://103.92.154.118:8096/',
-    'http://103.153.130.245/',
-    'http://103.78.255.174/',
-    'http://103.144.165.43:8096',
-    'http://103.16.74.218/',
-    'https://103.145.57.203/',
-    'http://103.144.165.43:8096',
-    'http://103.148.40.133/',
-    'http://113.212.111.246:8080/hls//col12.m3u8',
-    'http://59.153.100.190/',
-    'http://103.112.62.79:89/',
-    'http://103.200.93.146/web/index.html',
-    'http://10.90.90.200/',
-    'http://103.16.72.115/#latest',
-    'http://146.196.48.10/',
-    'http://103.82.8.194/Data/',
-    'http://103.132.95.221:8096/web/index.html#!/home.html',
-    'http://103.72.61.209/',
-    'http://103.92.154.118:8096/web/index.html#!/home',
-    'http://103.81.104.98/',
-    'http://103.91.144.230/',
-    'http://10.16.100.244/',
-    'http://103.92.154.118:8096',
-    'http://146.196.48.10/FILE--SERVER/FTP-1/',
-    'http://103.112.62.79:5230/',
-    'http://30.30.30.130',
-    'http://103.58.73.8/',
-    'http://10.1.1.1',
-    'http://146.196.48.10/FILE--SERVER/FTP-2/',
-    'http://113.212.111.246:8080/hls//col12.m3u8',
-    'http://172.28.28.20',
-    'http://103.102.27.172',
-    'http://103.109.56.115/index.php',
-    'http://103.109.56.117/index.php',
-    'http://103.109.56.117/ftpdata',
-    'http://146.196.48.10',
-    'http://103.77.252.113',
-    'http://103.77.252.113/ftpdata',
-    'http://103.203.93.2',
-    'http://103.148.178.230',
-    'http://103.166.193.10/ftp',
-    'http://172.17.50.240',
-    'http://172.17.50.243',
-    'http://ftp5.circleftp.net',
-    'http://15.1.1.5',
-    'http://192.168.91.8'
-];
+const csv = require('csv-parser');
+const process = require('process');
+const { env } = process; // `env` is a property of `process`
+const { URL } = require('url');
+const path = require('path');
 
 
-console.log(urls.length);
+const servers = path.join(__dirname, 'servers.csv');
 
-fs.writeFileSync('working_url.txt', '-- Working URL --\n');
+const timeout = env.TIMEOUT | 10000
 
-const checkUrl = async () => {
-    for (const url of urls) {
-        try {
-            const response = await axios.get(url , { timeout: 3000 }) ;
-            if(response.status !== 200) {
-                throw new Error('URL is not working');
-            }
-            console.log(`URL: ${url} is working`);
-            fs.appendFileSync('working_url.txt', `${url}\n`);
-        } catch (error) {
-            console.log(`URL: ${url} is not working`);
-        }
-    }
+
+let outputMap = {}
+let bufferCount = 0;
+
+fs.createReadStream(servers)
+  .pipe(csv())
+  .on('data',async (row) => await checkUrl(row))
+  .on('end', () => {
+    console.log('Finished reading csv')
+});
+
+async function checkUrl(row) {
+  const url = new URL(row.URL);
+  let hostname = url.hostname
+  let port = url.port
+  let host = url.host
+  let path = url.pathname
+
+  console.log(`Started Checking ${host}${path}`)
+  bufferCount++;
+
+
+  let httpSupport = await new Promise((resolve) => {
+    let req = http.get(`http://${host}${path}`, { timeout: timeout }, (res) => res.statusCode == 200 ? resolve(true) : resolve(false))
+      .on('error', () => resolve(false))
+      .on('timeout', () => { req.destroy(); resolve(false) })
+  })
+
+  let httpsSupport = await new Promise((resolve) => {
+    let req = https.get(`https://${host}${path}`, { timeout: timeout }, (res) => res.statusCode == 200 ? resolve(true) : resolve(false))
+      .on('error', () => resolve(false))
+      .on('timeout', () => { req.destroy(); resolve(false) })
+  })
+
+  let pingHost = await ping.promise.probe(host)
+if (pingHost.alive || httpSupport || httpsSupport) {
+  if (typeof outputMap[row.Category] === 'undefined') outputMap[row.Category] = [{
+    Name:row.name,
+    URL:row.URL,
+    Comment:row.Comment,
+    ping:pingHost.alive,
+    pingTime:pingHost.time,
+    http:httpSupport,
+    https:httpsSupport,
+  }]
+    else outputMap[row.Category].push({
+      Name:row.Name,
+      URL:row.URL,
+      Comment:row.Comment,
+      ping:pingHost.alive,
+      pingTime:pingHost.time,
+      http:httpSupport,
+      https:httpsSupport,
+    })
+}
+  bufferCount--;
+  console.log(`Finished : ${row.URL}`)
+  if (bufferCount==0) generateTXT()
 }
 
-checkUrl();
-
+function generateTXT() {
+  console.log("Startiing Writing")
+  //console.log(outputMap)
+  let finalResult = ""
+  for (let i in outputMap) {
+    if (outputMap[i].length!=0) {
+      finalResult += "----------------------------------- "
+      finalResult += `Category : ${i}`
+      finalResult += " -----------------------------------"
+      for (let j of outputMap[i]) {
+          let report = `\n\n--- ${j.Name} ---\n`
+          report+=`URL\t\t\t\t\t: ${j.URL}\n`
+          if (j.ping) {
+            report += `Ping\t\t\t\t: took ${j.pingTime}\n`
+          } else {
+            report += `Ping\t\t\t\t: failed\n`
+          }
+          let browerAccessible = j.http || j.https
+          if (browerAccessible) {
+            report += `Browser accessible\t: ${browerAccessible}\n`
+            report += `TLS support\t\t\t: ${j.https}\n`
+          } else {
+            report += `Browser accessible\t: No, Contact server ISP to unblock your IP\n`
+          }
+          report += `Comment: ${j.Comment}\n`
+          finalResult += report
+      }
+      finalResult += '\n\n'
+    }
+  }
+  fs.writeFileSync('working_url.txt',finalResult)
+  console.log("Finished!")
+}

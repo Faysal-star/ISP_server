@@ -4,7 +4,7 @@ There are about 55 servers in the list , with chat , movie , tv servers. Run the
 
 ## Running the appilcation
 ### From prebuilt binary
-1. Download executable from [releases](https://github.com/tasmirz/ISP_server/releases).
+1. Download executable from [releases](https://github.com/Faysal-star/ISP_server/releases).
 ### From Source
 1. Download this code as zip
 2. Install Node.js if you haven't

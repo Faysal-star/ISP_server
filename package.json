@@ -1,10 +1,8 @@
 {
   "dependencies": {
     "csv-parser": "^3.0.0",
+    "express": "^4.19.2",
     "ping": "^0.4.4"
-  },
-  "engines": {
-    "node": "16.x"
   },
   "name": "isp_server",
   "version": "1.0.1",
@@ -16,7 +14,8 @@
   "bin": "script.js",
   "pkg": {
     "assets": [
-      "/**/servers.csv"
+      "servers.csv",
+      "public/**/*"
     ],
     "targets": [
       "node16-linux-x64",

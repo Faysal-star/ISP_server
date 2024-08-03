@@ -1,60 +1,58 @@
 Name,Category,URL,Comment
-"Unknown","generic","http://103.112.62.79:8065/",""
-"Unknown","generic","https://103.112.62.79:5443/",""
-"Unknown","generic","http://103.150.254.245:3000",""
-"Unknown","chat","http://103.150.254.245:56969","This website does not have tls and E2EE and file is uploaded as soon as you select a file. There are no way to delete sent messages"
-"Unknown","generic","http://103.112.62.79:5555/",""
-"Unknown","generic","http://146.196.48.9/",""
-"Unknown","generic","https://103.200.93.146/",""
-"Unknown","generic","http://103.43.151.2:8099/",""
-"Unknown","generic","https://103.200.93.146/games/",""
-"Unknown","generic","http://146.196.48.10/",""
-"Unknown","generic","http://103.9.185.82/",""
-"Unknown","generic","http://103.76.47.6:8096/",""
-"Unknown","generic","http://103.76.47.6:8080/",""
-"Unknown","generic","http://103.92.154.118:8096/",""
-"Unknown","generic","http://103.153.130.245/",""
-"Unknown","generic","http://103.78.255.174/",""
-"Unknown","generic","http://103.144.165.43:8096",""
-"Unknown","generic","http://103.16.74.218/",""
-"Unknown","generic","https://103.145.57.203/",""
-"Unknown","generic","http://103.144.165.43:8096",""
-"Unknown","generic","http://103.148.40.133/",""
-"Unknown","generic","http://113.212.111.246:8080/hls//col12.m3u8",""
-"Unknown","generic","http://59.153.100.190/",""
-"Unknown","generic","http://103.112.62.79:89/",""
-"Unknown","generic","http://103.200.93.146/web/index.html",""
-"Unknown","generic","http://10.90.90.200/",""
-"Unknown","generic","http://103.16.72.115/#latest",""
-"Unknown","generic","http://146.196.48.10/",""
-"Unknown","generic","http://103.82.8.194/Data/",""
-"Unknown","generic","http://103.132.95.221:8096/web/index.html#!/home.html",""
-"Unknown","generic","http://103.72.61.209/",""
-"Unknown","generic","http://103.92.154.118:8096/web/index.html#!/home",""
-"Unknown","generic","http://103.81.104.98/",""
-"Unknown","generic","http://103.91.144.230/",""
-"Unknown","generic","http://10.16.100.244/",""
-"Unknown","generic","http://103.92.154.118:8096",""
-"Unknown","generic","http://146.196.48.10/FILE--SERVER/FTP-1/",""
-"Unknown","generic","http://103.112.62.79:5230/",""
-"Unknown","generic","http://30.30.30.130",""
-"Unknown","generic","http://103.58.73.8/",""
-"Unknown","generic","http://10.1.1.1",""
-"Unknown","generic","http://146.196.48.10/FILE--SERVER/FTP-2/",""
-"Unknown","generic","http://113.212.111.246:8080/hls//col12.m3u8",""
-"Unknown","generic","http://172.28.28.20",""
-"Unknown","generic","http://103.102.27.172",""
-"Unknown","generic","http://103.109.56.115/index.php",""
-"Unknown","generic","http://103.109.56.117/index.php",""
-"Unknown","generic","http://103.109.56.117/ftpdata",""
-"Unknown","generic","http://146.196.48.10",""
-"Unknown","generic","http://103.77.252.113",""
-"Unknown","generic","http://103.77.252.113/ftpdata",""
-"Unknown","generic","http://103.203.93.2",""
-"Unknown","generic","http://103.148.178.230",""
-"Unknown","generic","http://103.166.193.10/ftp",""
-"Unknown","generic","http://172.17.50.240",""
-"Unknown","generic","http://172.17.50.243",""
-"Unknown","generic","http://ftp5.circleftp.net",""
-"Unknown","generic","http://15.1.1.5",""
-"Unknown","generic","http://192.168.91.8",""
+Unknown,FTP,https://103.200.93.146/,Versatile FTP Server
+Unknown,Chat,https://103.162.56.10/Chat/,Chat Server
+Unknown,Stream,https://103.145.57.203/,Movie Server
+Unknown,Meet,https://103.112.62.79:5443/,"Privacy focused video conferencing service, like Zoom and Google Meet."
+Unknown,Generic,http://ftp5.circleftp.net,
+Unknown,Test,http://59.153.100.190/,Speed Test Server
+Unknown,Generic,http://30.30.30.130,
+Unknown,Generic,http://192.168.91.8,
+Unknown,Generic,http://172.28.28.20,
+Unknown,Generic,http://172.17.50.243,
+Unknown,Generic,http://172.17.50.240,
+Unknown,FTP,http://172.16.50.8/,FTP Server - SamOnline
+Unknown,FTP,http://172.16.50.4/,FTP Server - SamOnline
+Unknown,Generic,http://15.1.1.5,
+Unknown,Generic,http://146.196.48.9/,
+Unknown,Generic,http://146.196.48.10/FILE--SERVER/FTP-2/,
+Unknown,Generic,http://146.196.48.10/FILE--SERVER/FTP-1/,
+Unknown,Generic,http://146.196.48.10/,
+Unknown,Generic,http://113.212.111.246:8080/hls//col12.m3u8,
+Unknown,Generic,http://103.92.154.118:8096/web/index.html#!/home,
+Unknown,Generic,http://103.92.154.118:8096/,
+Unknown,Generic,http://103.91.144.230/,
+Unknown,Stream,http://103.9.185.82/,Robi Tube - Live TV streaming service.
+Unknown,FTP,http://103.82.8.194/Data,FTP Server
+Unknown,Generic,http://103.81.104.98/,
+Unknown,FTP,http://103.78.255.174/,FTP Server
+Unknown,FTP,http://103.77.252.113/ftpdata,Movie Server
+Unknown,Stream,http://103.77.252.113,Movie Server
+Unknown,Generic,http://103.76.47.6:8096/,
+Unknown,Generic,http://103.76.47.6:8080/,
+Unknown,Generic,http://103.72.61.209/,
+Unknown,Generic,http://103.58.73.8/,
+Unknown,Generic,http://103.43.151.2:8099/,
+Unknown,Generic,http://103.203.93.2,
+Unknown,Generic,http://103.200.93.146/web/index.html,
+Unknown,FTP,http://103.166.193.10/ftp,Natok Movie Server
+Unknown,News,http://103.16.74.218/,News Portal
+Unknown,News,http://103.16.72.115/#latest,News Portal
+Unknown,FTP,http://103.153.130.245/,FTP server.
+Unknown,Chat,http://103.150.254.245:56969,This website does not have tls and E2EE and file is uploaded as soon as you select a file. There are no way to delete sent messages
+Unknown,Generic,http://103.150.254.245:3000,
+Unknown,FTP,http://103.148.40.133/,Movie Server
+Unknown,Generic,http://103.148.178.230,
+Unknown,Generic,http://103.144.165.43:8096,
+Unknown,Generic,http://103.132.95.221:8096/,
+Unknown,Chat,http://103.121.217.121:8065,BDIX Chat Server. Can be used via Mattermost app from PlayStore.
+Unknown,Generic,http://103.112.62.79:89/,
+Unknown,Generic,http://103.112.62.79:8065/,
+Unknown,Generic,http://103.112.62.79:5555/,
+Unknown,Generic,http://103.112.62.79:5230/,
+Unknown,Generic,http://103.109.56.117/index.php,
+Unknown,FTP,http://103.109.56.117/ftpdata,Movie Server
+Unknown,FTP,http://103.109.56.115/index.php,Movie Server
+Unknown,FTP,http://103.102.27.172,LINK 71
+Unknown,Generic,http://10.90.90.200/,
+Unknown,Generic,http://10.16.100.244/,
+Unknown,Generic,http://10.1.1.1,

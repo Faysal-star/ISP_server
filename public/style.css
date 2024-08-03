@@ -1,0 +1,111 @@
+@font-face {
+    font-family: "Exo 2";
+    src: url(Exo2.ttf);
+}
+
+:root{
+    --dark-bg : #0a192e ;
+    --dark-fg : #1a2e4d ;
+    --font-light : #c6d1ed ;
+    --font-dark : #6c7b97 ;
+    --highlight : #60f5d9 ;
+}
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Exo 2", sans-serif;
+    font-optical-sizing: auto;
+    color: var(--font-light);
+}
+
+body{
+    background-color: var(--dark-bg);
+    color: #333;
+    font-size: 16px;
+    line-height: 1.6;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+main{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+    width: 100%;
+    max-width: 1200px;
+}
+
+h1, h2, h3, h4, h5, h6{
+    color: var(--highlight);
+    margin: 1rem 0;
+}
+
+.headline{
+    font-size: 2rem;
+    font-weight: 700;
+    border: 1px solid;
+    border-image: linear-gradient(90deg ,var(--dark-fg) , var(--highlight), var(--dark-fg));
+    border-image-slice: 1;
+    border-right: 0;
+    border-left: 0;
+    width: 100%;
+    text-align: center;
+}
+
+.cnt{
+    padding: .8rem;
+    background-color: var(--dark-fg);
+    border-radius: 5px;
+    width: 30%;
+    text-align: center;
+    margin-top: 1rem;
+}
+
+#serverList{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem;
+    width: 100%;
+    padding: 1rem;
+    margin-top: 1.5rem;
+}
+
+.server{
+    padding: 1rem;
+    background-color: var(--dark-fg);
+    border-radius: 5px;
+    width: 30%;
+    min-width: 200px;
+    text-align: center;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+a{
+    font-size: 1.2rem;
+    text-decoration: none;
+    transition: .1s;
+}
+
+a:hover{
+    color: var(--highlight);
+}
+
+.Active .status{
+    color: var(--highlight);
+}
+
+.Inactive .status , .Inactive a{
+    color: var(--font-dark);
+}
+
+.footer{
+    margin-top: 1rem;
+    padding: 1rem;
+    text-align: center;
+}
